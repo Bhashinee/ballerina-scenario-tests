@@ -17,7 +17,11 @@ listener http:Listener listener1= new(9000);
 
 @kubernetes:Deployment {
     image: "ballerina.service.io/http-service:v1.0",
-    name: "http-service"
+    name: "http-service",
+    username:"<USERNAME>",
+    password:"<PASSWORD>",
+    push:true,
+    imagePullPolicy:"Always"
 }
 
 service receiver on listener1 {

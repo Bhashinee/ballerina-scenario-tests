@@ -16,7 +16,11 @@ listener http:Listener listener2= new(9090);
 
 @kubernetes:Deployment {
     image: "ballerina.client.io/http-service:v1.0",
-    name: "http-client"
+    name: "http-client",
+    username:"<USERNAME>",
+    password:"<PASSWORD>",
+    push:true,
+    imagePullPolicy:"Always"
 }
 service baseService on listener2 {
     resource function sendLargePayload(http:Caller caller, http:Request request) {
