@@ -3,7 +3,7 @@ import ballerina/io;
 import ballerina/kubernetes;
 
 @kubernetes:Ingress {
-    hostname:"ballerina.service.io",
+    hostname:"ballerina.client.io",
     name:"http-client",
     path:"/"
 }
@@ -15,7 +15,7 @@ import ballerina/kubernetes;
 listener http:Listener listener2= new(9090);
 
 @kubernetes:Deployment {
-    image: "ballerina.client.io/http-service:v1.0",
+    image: "ballerina.client.io/http-client:v1.0",
     name: "http-client",
     username:"<USERNAME>",
     password:"<PASSWORD>",
