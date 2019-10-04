@@ -87,7 +87,7 @@
             </activation>
             <modules>
                 <module>scenarios-commons</module>
-                <module>http</module>
+                <module>http/errorscenarios</module>
                 <module>bbg/data</module>
                 <module>bbg/kafka</module>
                 <module>bbg/bbg-integration-patterns</module>
