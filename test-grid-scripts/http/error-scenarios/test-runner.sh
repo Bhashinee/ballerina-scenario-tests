@@ -16,9 +16,9 @@
 # under the License.
 
 readonly test_clientHandleErrors_parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
-readonly test_clientHandleErrors_grand_parent_path=$(dirname ${test_soap_parent_path})
-readonly test_clientHandleErrors_great_grand_parent_path=$(dirname ${test_soap_grand_parent_path})
-readonly test_clientHandleErrors_great_great_grand_parent_path=$(dirname ${test_soap_great_grand_parent_path})
+readonly test_clientHandleErrors_grand_parent_path=$(dirname ${test_clientHandleErrors_parent_path})
+readonly test_clientHandleErrors_great_grand_parent_path=$(dirname ${test_clientHandleErrors_grand_parent_path})
+readonly test_clientHandleErrors_great_great_grand_parent_path=$(dirname ${test_clientHandleErrors_great_grand_parent_path})
 
 . ${test_clientHandleErrors_great_grand_parent_path}/common/usage.sh
 . ${test_clientHandleErrors_great_grand_parent_path}/setup/setup_test_env.sh
@@ -27,7 +27,7 @@ run_provided_test() {
     local test_group_to_run=${deployment_config["TestGroup"]}
 
     if [ "${test_group_to_run}" = "clientHandleErrors" ]; then
-        . ${test_clientHandleErrors_parent_path}/test-soap-connector.sh
+        . ${test_clientHandleErrors_parent_path}/test.sh
     fi
 }
 
