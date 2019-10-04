@@ -133,13 +133,13 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
         </profile>
-        <profile>
-            <id>errorscenarios</id>
-            <modules>
-                <module>scenarios-commons</module>
-                <module>http/errorscenarios</module>
-            </modules>
-        </profile>
+<!--        <profile>-->
+<!--            <id>errorscenarios</id>-->
+<!--            <modules>-->
+<!--                <module>scenarios-commons</module>-->
+<!--                <module>http/errorscenarios</module>-->
+<!--            </modules>-->
+<!--        </profile>-->
     </profiles>
 
     <properties>
