@@ -24,7 +24,7 @@ readonly deployment_clientHandleErrors_great_grand_parent_path=$(dirname ${deplo
 
 function setup_deployment() {
     clone_repo_and_set_bal_path
-    unzip http/errorscenarios/src/test/resources/data/testFile.zip
+    unzip http/errorscenarios/src/test/resources/testFile.zip
     replace_variables_in_service_bal_file ${server_bal_path}
     replace_variables_in_client_bal_file ${client_bal_path}
     build_and_deploy_http_client_service
