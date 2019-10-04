@@ -32,7 +32,7 @@ function run_tests() {
     sys_prop_array["http.service.port"]=${node_port}
 
     # Builds and run tests of the given connector section and copies resulting surefire reports to output directory
-    run_connector_section_tests soap soap sys_prop_array ${input_dir} ${output_dir} "clientHandleErrors"
+    run_http_section_tests errorscenarios errorscenarios sys_prop_array ${input_dir} ${output_dir} "clientHandleErrors"
 }
 
 run_tests
