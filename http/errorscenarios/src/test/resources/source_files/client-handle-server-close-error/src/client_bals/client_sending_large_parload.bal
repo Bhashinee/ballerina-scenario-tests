@@ -17,7 +17,8 @@ listener http:Listener listener2= new(9090);
 @kubernetes:Deployment {
     image: "ballerina.client.io/http-client:v1.0",
     name: "http-client",
-    copyFiles: [{ target: "/home", sourceFile: "/home/testFile" }],
+    copyFiles: [{ target: "/home",
+                sourceFile: "testFile" }],
     username:"<USERNAME>",
     password:"<PASSWORD>",
     push:true,
@@ -29,7 +30,7 @@ service baseService on listener2 {
         io:println("Started");
 
         http:Request mp4file = new();
-        mp4file.setFileAsPayload("../../../testFile");
+        mp4file.setFileAsPayload("/home/testFile");
         var response = jpgEnpoint->post("/", mp4file);
 
         if (response is http:Response) {
