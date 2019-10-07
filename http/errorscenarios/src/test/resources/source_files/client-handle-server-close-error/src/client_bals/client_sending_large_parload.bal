@@ -37,12 +37,14 @@ service baseService on listener2 {
             var payload = response.getTextPayload();
             if (payload is error) {
                 io:println(payload.detail());
+                var res = caller->respond(<@untainted> payload.detail().toString());
             } else {
                 io:println(payload);
+                var res = caller->respond(<@untainted> payload);
             }
         } else {
             io:println(response);
+            var res = caller->respond("Error response");
         }
-        var res = caller->respond(response.toString());
     }
 }
