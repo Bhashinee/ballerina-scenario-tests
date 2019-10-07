@@ -29,7 +29,7 @@ service baseService on listener2 {
         io:println("Started");
 
         http:Request mp4file = new();
-        mp4file.setFileAsPayload("/home/testFile");
+        mp4file.setFileAsPayload("../../../testFile");
         var response = jpgEnpoint->post("/", mp4file);
 
         if (response is http:Response) {
