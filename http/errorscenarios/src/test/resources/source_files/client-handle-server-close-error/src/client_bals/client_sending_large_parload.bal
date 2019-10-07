@@ -17,7 +17,7 @@ listener http:Listener listener2= new(9090);
 @kubernetes:Deployment {
     image: "ballerina.client.io/http-client:v1.0",
     name: "http-client",
-    copyFiles: [{ target: "/home", source: "/home/testFile" }],
+    copyFiles: [{ target: "/home", sourceFile: "/home/testFile" }],
     username:"<USERNAME>",
     password:"<PASSWORD>",
     push:true,
