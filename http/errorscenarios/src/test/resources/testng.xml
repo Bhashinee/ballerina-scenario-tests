@@ -17,16 +17,10 @@
 
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Ballerina-Scenario-Test-Suite">
-    <test name="ballerina-http-resiliency-scenario-tests" parallel="false">
-        <groups>
-            <run>
-                <exclude name="broken"/>
-            </run>
-        </groups>
-
-        <classes>
-            <class name="org.ballerinalang.scenario.test.http.resiliency.CircuitBreakerWithRetryTest" />
-        </classes>
+<suite name="ballerina-http-error-test-suite">
+    <test name="ballerina-http-error-test-suite" preserve-order="true" parallel="false">
+        <packages>
+            <package name="org.ballerinalang.scenario.test.errorscenarios.HttpServerClosingConnectionAbruptlyTest"/>
+        </packages>
     </test>
 </suite>

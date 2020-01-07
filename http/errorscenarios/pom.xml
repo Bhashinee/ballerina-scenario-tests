@@ -25,8 +25,8 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>ballerina-scenario-test-http-resiliency</artifactId>
-    <name>Ballerina - HTTP Resiliency Tests</name>
+    <artifactId>ballerina-error-scenario-test-http</artifactId>
+    <name>Ballerina - Error Scenario HTTP Tests</name>
 
     <dependencies>
         <dependency>
