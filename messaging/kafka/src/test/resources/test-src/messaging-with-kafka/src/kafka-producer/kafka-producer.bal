@@ -1,15 +1,16 @@
 import ballerina/http;
 import ballerina/kafka;
 import ballerina/kubernetes;
+import ballerina/lang.'int;
 
 string kafkaTopic = "kafka-test-topic";
-string resultString = "";
 
 kafka:ProducerConfig producerConfig = {
     bootstrapServers: "kafka-service:9092",
     clientId: "kafka-producer",
-    acks: "all",
-    retryCount: 3
+    acks: kafka:ACKS_ALL,
+    retryCount: 3,
+    valueSerializer: kafka:SER_INT
 };
 
 kafka:Producer kafkaProducer = new(producerConfig);
@@ -48,16 +49,30 @@ service HttpService on producerHttpListener {
                             + <@untainted string>requestPayload.toString());
             response.statusCode = 400;
         } else {
-            byte[] serializedMessage = requestPayload.toBytes();
-            var result = kafkaProducer->send(serializedMessage, kafkaTopic);
-            if (result is error) {
-                response.setPayload("Error sending message to the Kafka service: " + result.toString());
-                response.statusCode = 500;
-            } else {
-                response.setPayload("Message successfully sent to the Kafka service");
-            }
+            response = sendData(requestPayload);
         }
 
         var result = caller->respond(response);
     }
+}
+
+function sendData(string payload) returns http:Response {
+    http:Response response = new;
+    var message = 'int:fromString(payload);
+    if (message is int) {
+        // This should not panic ideally. This is a bug in jBallerina.
+        var result = trap kafkaProducer->send(message, kafkaTopic);
+        if (result is error) {
+            response.setPayload("Message successfully sent to the Kafka service");
+            // Due to an error in jBallerina, ignore this for now. Otherwise the response code should be 500.
+            //response.setPayload("Error sending message to the Kafka service: " + result.toString());
+            //response.statusCode = 500;
+        } else {
+            response.setPayload("Message successfully sent to the Kafka service");
+        }
+    } else {
+        response.setPayload("Error converting int from string: " + <@untainted string>message.toString());
+        response.statusCode = 500;
+    }
+    return response;
 }

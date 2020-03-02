@@ -1223,6 +1223,7 @@
                 <module>database/util</module>
                 <module>grpc/unary</module>
                 <module>messaging/nats</module>
+                <module>messaging/rabbitmq</module>
                 <module>messaging/kafka</module>
             </modules>
         </profile>
@@ -1276,6 +1277,13 @@
             <modules>
                 <module>scenarios-commons</module>
                 <module>messaging/nats</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>rabbitmq</id>
+            <modules>
+                <module>scenarios-commons</module>
+                <module>messaging/rabbitmq</module>
             </modules>
         </profile>
         <profile>
